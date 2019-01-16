@@ -1,0 +1,17 @@
+#Hystrix Turbine 用来看系统的各个Hystrix Dashboard，它主要用来实时监控Hystrix的各项指标信息。通过Hystrix Dashboard反馈的实时信息
+spring:
+  application:
+    name: turbine
+server:
+  port: 7050
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:8000/eureka
+turbine:
+  # 需要收集监控信息的服务名,多个逗号分隔
+  app-config: producer-server
+  # 集群名称为 default
+  cluster-name-expression: new String("default")
+  # 设置为true，可以让同一主机上的服务通过主机名与端口号的组合来进行区分
+  combine-host-port: true
