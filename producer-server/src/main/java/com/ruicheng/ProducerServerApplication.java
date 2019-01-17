@@ -3,13 +3,15 @@ package com.ruicheng;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableDiscoveryClient
+/**
+ * 服务提供者
+ * @ EnableDiscoveryClient 开启客户端发现
+ * @ EnableFeignClients 开启Feign远程调用
+ * @EnableHystrix 启动hystrix的注解
+ */
 @SpringBootApplication
-@EnableFeignClients
-@EnableHystrix
+@EnableDiscoveryClient
 public class ProducerServerApplication {
 
     public static void main(String[] args) {

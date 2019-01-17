@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @date 2019/1/16 17:26
  */
 @Component
+//在@FeignClient注解上添加fallback属性，指定熔断后调用的本地方法
 @FeignClient(value = "producer-server", fallback = ProducerRemoteHystrix.class)
 public interface ProducerRemote {
     @GetMapping("/")

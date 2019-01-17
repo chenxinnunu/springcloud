@@ -45,6 +45,7 @@
         <module>producer-server</module>
         <module>customer-server</module>
         <module>turbine</module>
+        <module>hystrix-dashboard</module>
     </modules>
     <build>
         <plugins>

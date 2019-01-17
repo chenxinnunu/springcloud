@@ -4,11 +4,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
-/**跟踪系统
+/**
+ * Turbin提供把多个hystrix.stream的内容聚合为一个数据源供Dashboard展示
+ *
  * @author chenxin@chensanjin.xin
  * @date 2019/1/16 21:38
  */
 @SpringBootApplication
+//激活对Turbine的支持
 @EnableTurbine
 public class TurbineApplication {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-#Hystrix Turbine 用来看系统的各个Hystrix Dashboard，它主要用来实时监控Hystrix的各项指标信息。通过Hystrix Dashboard反馈的实时信息
+#Turbine把多个hystrix.stream的内容聚合为一个数据源供Dashboard展示，它主要用来实时监控Hystrix的各项指标信息。通过Hystrix Dashboard反馈的实时信息
 spring:
   application:
     name: turbine
@@ -11,7 +11,12 @@ eureka:
 turbine:
   # 需要收集监控信息的服务名,多个逗号分隔
   app-config: producer-server
-  # 集群名称为 default
+  #指定聚合哪些集群，多个使用”,”分割，默认为default。
+  #可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
+  #turbine.aggregator.clusterConfig ：
+  #1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称；
+  #2. 当clusterNameExpression: default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default；
+  #3. 当clusterNameExpression: metadata[‘cluster’]时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
   cluster-name-expression: new String("default")
   # 设置为true，可以让同一主机上的服务通过主机名与端口号的组合来进行区分
   combine-host-port: true
