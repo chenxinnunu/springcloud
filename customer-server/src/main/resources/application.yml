@@ -20,6 +20,5 @@ management:
     web:
       exposure:
         include: hystrix.stream
-      base-path: /
 swagger:
   base-package: com.ruicheng.controller

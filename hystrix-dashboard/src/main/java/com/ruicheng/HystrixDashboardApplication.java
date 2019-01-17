@@ -2,11 +2,13 @@ package com.ruicheng;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 @SpringBootApplication
 //开启熔断监控仪表盘
 @EnableHystrixDashboard
+@EnableDiscoveryClient
 public class HystrixDashboardApplication {
 
 	public static void main(String[] args) {

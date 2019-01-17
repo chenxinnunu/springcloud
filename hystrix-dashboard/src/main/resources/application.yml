@@ -3,12 +3,15 @@ spring:
     name: hystrix-dashboard
 server:
   port: 7000
-#此工程为单点的hystrix dashboard的监控工程（服务调用监控），在消费工程里加上以下配置，并开启熔断器注解，
-#management:
- # endpoints:
-  #  web:
-   #   exposure:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:8000/eureka
+    #此工程为单点的hystrix dashboard的监控工程（服务调用监控），在消费工程里加上以下配置，并开启熔断器注解，
+    #management:
+    # endpoints:
+    #  web:
+    #   exposure:
     #    include: hystrix.stream
-     # base-path: /
-# 浏览器输入http://localhost:7000/hystrix，之后输入http://localhost:8200/hystrix.stream ，点击Monitor Stream，就会有监控信息
+# 浏览器输入http://localhost:7000/hystrix，之后输入http://localhost:8200/actuator/hystrix.stream ，点击Monitor Stream，就会有监控信息
 #聚合监控用Turbine
