@@ -1,4 +1,5 @@
 server:
+  #启动之后改变端口号，在启动，即可模拟高可用
   port: 8300
 spring:
   application:
@@ -12,6 +13,13 @@ spring:
           password: rRCRQ2018?12313
           #配置git仓库下的相对地址，可以配置多个，用 , 分割
           search-paths: config-repo
+  #spring clooud Bus消息总线能够代理实例的各个节点，一个节点刷新会通知其他节点也刷新
+  #唯一实现方式用rabbitmq消息代理作为通道，需要安装rubbitmq，将server端也加入消息总线，为了让server发请求给消息总线，而不经过client，保持服务单一职责性，对等性等
+  rabbitmq:
+    host: 119.29.222.73
+    port: 5672
+    username: root
+    password: 123456
 eureka:
   client:
     serviceUrl:
