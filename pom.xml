@@ -49,6 +49,7 @@
         <module>config-server</module>
         <module>config-client</module>
         <module>zuul-server</module>
+        <module>file-upload-server</module>
     </modules>
     <build>
         <plugins>

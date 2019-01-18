@@ -1,0 +1,25 @@
+server:
+  port: 8600
+spring:
+  application:
+    name: file-upload-server
+  servlet:
+    multipart:
+      #支持批量上传
+      enabled: true
+      # 上传文件的临时目录 （一般情况下不用特意修改)
+      location:
+      # 上传文件最大为 1M （默认值 1M 根据自身业务自行控制即可）
+      max-file-size: 200Mb
+      # 上传请求最大为 10M（默认值10M 根据自身业务自行控制即可）
+      max-request-size: 200Mb
+      # 文件大小阈值，当大于这个阈值时将写入到磁盘，否则存在内存中，（默认值0 一般情况下不用特意修改）
+      file-size-threshold: 0
+      # 判断是否要延迟解析文件（相当于懒加载，一般情况下不用特意修改）
+      resolve-lazily: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+  instance:
+    prefer-ip-address: true

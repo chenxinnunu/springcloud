@@ -21,4 +21,19 @@ zuul:
     #这样访问http://localhsot:8500/customer-server就可以写成http://localhost:8500/user **表示后面的路径不变，匹配所有
     customer-server: /user/**
   #更多路由配置，请看资料
-
+  host:
+  #zuul超时时间
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+#熔断超时时间，上传大文件时最好配置上
+hystrix:
+  command:
+   default:
+    execution:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 250000
+#负载均衡超时时间，上传大文件时最好配上
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 3000
