@@ -12,6 +12,9 @@ spring:
       ## 开启消息跟踪
         enabled: true
     config:
+      #如果配置服务开启了权限认证，那要加上用户名密码
+      username: admin
+      password: 123456
       #对应config-server所获取的配置文件的{application}部分
       name: neo-config
       #对应config-server所获取的配置文件的{profile}部分

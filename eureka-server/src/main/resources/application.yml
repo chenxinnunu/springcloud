@@ -1,6 +1,7 @@
 spring:
   application:
     name: erueka-server
+  #开启安全验证
   security:
     user:
       name: admin
