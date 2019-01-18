@@ -13,7 +13,7 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 public class ZuulServerApplication {
 
-    public static void main(String[] args) {
+    public static void  main(String[] args) {
         SpringApplication.run(ZuulServerApplication.class, args);
     }
 
