@@ -22,11 +22,21 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
+        <!--使用消息中间件收集hystrix监控数据，需要删除turbine-->
+    <!--      <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+          </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+            <artifactId>spring-cloud-starter-turbine-stream</artifactId>
+            <version>1.1.5.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
+        <!--结束-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

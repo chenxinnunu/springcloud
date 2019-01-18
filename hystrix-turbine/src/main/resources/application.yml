@@ -2,6 +2,12 @@
 spring:
   application:
     name: hystrix-turbine
+  #使用消息中间件收集hystrix监控数据
+  rabbitmq:
+    host: 119.29.222.73
+    port: 5672
+    username: root
+    password: 123456
 server:
   port: 7050
 eureka:
@@ -10,18 +16,19 @@ eureka:
       defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
   instance:
     prefer-ip-address: true
-turbine:
-  # 需要收集监控信息的服务名,多个逗号分隔
-  app-config: customer-server
-  #指定聚合哪些集群，多个使用”,”分割，默认为default。
-  #可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
-  #turbine.aggregator.clusterConfig ：
-  #1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称；
-  #2. 当clusterNameExpression: default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default；
-  #3. 当clusterNameExpression: metadata[‘cluster’]时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
-  cluster-name-expression: new String("default")
-  # 设置为true，可以让同一主机上的服务通过主机名与端口号的组合来进行区分
-  combine-host-port: true
-
-  # 启动之后浏览器访问 http://localhost:7050/turbine.stream 即可查看监控数据
-  #在Hystrix Dashboard主界面上输入turbine的监控地址http://localhost:7050/turbine.stream，点击“Monitor Stream”按钮进行实时监控。
+#使用消息中间件收集hystrix监控数据时，删除下面
+#turbine:
+#  # 需要收集监控信息的服务名,多个逗号分隔
+#  app-config: customer-server
+#  #指定聚合哪些集群，多个使用”,”分割，默认为default。
+#  #可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
+#  #turbine.aggregator.clusterConfig ：
+#  #1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称；
+#  #2. 当clusterNameExpression: default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default；
+#  #3. 当clusterNameExpression: metadata[‘cluster’]时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
+#  cluster-name-expression: new String("default")
+#  # 设置为true，可以让同一主机上的服务通过主机名与端口号的组合来进行区分
+#  combine-host-port: true
+#
+#  # 启动之后浏览器访问 http://localhost:7050/turbine.stream 即可查看监控数据
+#  #在Hystrix Dashboard主界面上输入turbine的监控地址http://localhost:7050/turbine.stream，点击“Monitor Stream”按钮进行实时监控。
