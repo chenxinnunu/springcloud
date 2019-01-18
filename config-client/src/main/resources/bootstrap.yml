@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    config:
+      #对应config-server所获取的配置文件的{application}部分
+      name: neo-config
+      #对应config-server所获取的配置文件的{profile}部分
+      profile: dev
+      #对应对应config-server所获取的配置文件的{label}，如果配置中心使用的是本地存储，则该参数无效
+      label: master
+      #配置中心的具体地址
+      #uri: http://localhost:8300/
+      discovery:
+        #表示使用微服务发现组件中的config-server，而不是自己指定的config-server的uri，默认为false
+        enabled: true
+        #指定配置中心的service-id，便于扩展为高可用配置
+        service-id: config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+  instance:
+    prefer-ip-address: true

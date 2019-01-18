@@ -1,0 +1,11 @@
+server:
+  port: 8400
+spring:
+  application:
+    name: config-client
+#暴露endpoints *表示所有
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

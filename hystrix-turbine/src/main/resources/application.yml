@@ -8,6 +8,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+  instance:
+    prefer-ip-address: true
 turbine:
   # 需要收集监控信息的服务名,多个逗号分隔
   app-config: customer-server
