@@ -1,0 +1,24 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: zuul-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  # 该配置表示哪些敏感头不传递到服务组件，更多详细请看文档
+  #sensitiveHeaders: Cookie,Set-Cookie,Authorization #默认就是这三个
+  #忽略微服务，多个用逗号分隔,如果用"*"，表示忽略所有微服务，但是如果有routes，会只路由routes中的服务
+  #ignored-services: customer-server,prouder-server
+  #忽略所有包含/admin/的路径，也会忽略routes中服务包含的/admin/中的路径
+  #ignored-patterns: /**/admin/**
+  #自定义指定微服务的访问路径
+  routes:
+    #这样访问http://localhsot:8500/customer-server就可以写成http://localhost:8500/user **表示后面的路径不变，匹配所有
+    customer-server: /user/**
+  #更多路由配置，请看资料
+
