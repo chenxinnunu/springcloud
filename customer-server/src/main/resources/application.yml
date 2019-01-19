@@ -22,7 +22,7 @@ eureka:
 feign:
   hystrix:
     enabled: true
-#  实现对Hystrix Dashboard 单实例节点的监控，集群需要整合Turbine
+#  实现对Hystrix监控
 management:
   endpoints:
     web:

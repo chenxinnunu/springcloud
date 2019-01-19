@@ -1,4 +1,7 @@
 server:
+#把zuul的多个节点注册到Eureka商家就实现了高可用，与其他服务的高可用没有什么区别
+#Zuul客户端会自动从EurekaServer中查询ZuulServer的列表，并使用Ribbo负载均衡的请求Zuul集群
+#当Zuul客户端未注册到Eureka上时，可使用Nginx等实现负载均衡
   port: 8500
 spring:
   application:
@@ -25,7 +28,12 @@ zuul:
   #zuul超时时间
     connect-timeout-millis: 10000
     socket-timeout-millis: 60000
-#熔断超时时间，上传大文件时最好配置上
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+#熔断超时时间，上传大文件时最好配置上,虽然看起来不能配置，但是确实生效
 hystrix:
   command:
    default:
