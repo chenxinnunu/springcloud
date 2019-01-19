@@ -6,9 +6,15 @@ spring:
   # zipkin为分布式链路调用监控系统，聚合各业务系统调用延迟数据，达到链路调用监控跟踪。
   zipkin:
     base-url: http://localhost:9411/
+  sleuth:
+   sampler:
+    #指定需采样的请求的百分比默认值是0.1，即10%，开发时设置成1.0是为了更好看的效果
+     probability: 1.0
 eureka:
   client:
     service-url:
       defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
   instance:
     prefer-ip-address: true
+logging:
+  level: info

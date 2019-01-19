@@ -50,6 +50,7 @@
         <module>config-client</module>
         <module>zuul-server</module>
         <module>file-upload-server</module>
+        <module>zipkin-server</module>
     </modules>
     <build>
         <plugins>

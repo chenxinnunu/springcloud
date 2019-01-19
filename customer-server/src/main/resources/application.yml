@@ -6,6 +6,10 @@ spring:
   # zipkin为分布式链路调用监控系统，聚合各业务系统调用延迟数据，达到链路调用监控跟踪。
   zipkin:
     base-url: http://localhost:9411/
+  sleuth:
+   sampler:
+    #指定需采样的请求的百分比默认值是0.1，即10%，开发时设置成1.0是为了更好看的效果
+     probability: 1.0
   #使用消息中间件收集hystrix监控数据
   rabbitmq:
     host: 119.29.222.73
@@ -28,5 +32,5 @@ management:
     web:
       exposure:
         include: hystrix.stream
-swagger:
-  base-package: com.ruicheng.controller
+logging:
+  level: info
