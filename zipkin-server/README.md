@@ -1,4 +1,4 @@
-### 使用zipkin实现链路跟踪
+### 使用zipkin实现HTTP方式链路跟踪
 - 在控制台输入获取zipkin.jar的地址
    
    因为在springboot2.0以后，官方不再建议自己搭建zipkin的服务端，而是提供现成的jar包，直接运行即可.参考网址:http://www.bubuko.com/infodetail-2596757.html
@@ -40,3 +40,20 @@ spring:
 ```
 - 打开zipkin页面就可以看到调用链情况了
 ![输入图片说明](https://gitee.com/uploads/images/2018/0615/130513_323b58d1_1305332.png "屏幕截图.png")
+
+### 使用zipkin实现消息总线RabbitMQ方式链路跟踪
+因为之前说的 Zipkin 不再推荐我们来自定义 Server 端了，所以在最新版本的 Spring Cloud 依赖管理里已经找不到 zipkin-server 了。
+可以通过环境变量让 Zipkin 从 RabbitMQ 中读取信息，就像这样：
+RABBIT_ADDRESSES=localhost java -jar zipkin.jar
+在微服务应用中加入spring-cloud-stream-binder-rabbit就好了，别的不用改
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+</dependency>
+```
+不过为了说明是通过 RabbitMQ 传输的信息，
+将spring.zipkin.base-url均改为http://localhost:9412/，即指向一个错误的地址。
+启动微服务，并启动Zipkin
+RABBIT_ADDRESSES=localhost java -jar zipkin.jar
+访问微服务，并刷新Zipkin UI,得到信息
