@@ -43,5 +43,18 @@ hystrix:
           timeoutInMilliseconds: 250000
 #负载均衡超时时间，上传大文件时最好配上
 ribbon:
-  ReadTimeout: 60000
+  eureka:
+    enabled: true
+  ReadTimeout: 3000
   ConnectTimeout: 3000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: false
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+    resource:
+      token-info-uri: http://localhost:8050/oauth/check_token
+      service-id: zuul-server

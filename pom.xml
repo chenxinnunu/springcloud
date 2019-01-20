@@ -51,6 +51,7 @@
         <module>zuul-server</module>
         <module>file-upload-server</module>
         <module>zipkin-server</module>
+        <module>auth-server</module>
     </modules>
     <build>
         <plugins>
