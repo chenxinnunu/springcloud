@@ -5,8 +5,7 @@
     <parent>
         <artifactId>alliance</artifactId>
         <groupId>com.ruicheng</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <version>1.0.0</version>
     </parent>
     <groupId>com.ruicheng</groupId>
     <artifactId>producer-server</artifactId>
@@ -64,5 +63,17 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
     </dependencies>
-
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

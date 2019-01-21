@@ -1,0 +1,19 @@
+#表示该docker-compose.yml文件用的是Version 2 file format
+version: '2'
+#Version 2 file format的固定写法，为project定义服务
+services:
+  #指定服务名称,peer1,peer2两个Eureka Server
+  peer1:
+    #指定服务所使用的镜像
+    image: spring-boot-cloud/eureka-server
+    #宿主机端口：容器端口，开发容器端口到宿主机端口
+    ports:
+      - "8000:8000"
+    environment:
+      - spring.profiles.active=peer1
+  peer2:
+    image: spring-boot-cloud/eureka-server
+    ports:
+      - "8001:8001"
+    environment:
+      - spring.profiles.active=peer2

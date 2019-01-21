@@ -16,5 +16,5 @@ eureka:
       defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
   instance:
     prefer-ip-address: true
-logging:
-  level: info
+#logging:
+#  level: info

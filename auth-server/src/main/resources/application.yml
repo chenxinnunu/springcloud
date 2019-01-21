@@ -8,17 +8,19 @@ spring:
     time-zone: GMT+8
     default-property-inclusion: non_null
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=UTF-8
+    url: jdbc:mysql://10.0.0.192:3306/test?characterEncoding=UTF-8
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
   redis:
     database: 14
-    host: 127.0.0.1
-    password:
+    host: 10.0.0.192
+    password: ruicheng123
     timeout: 8000
     port: 6379
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://admin:123456@localhost:8000/eureka/
+    service-url:
+      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+  instance:
+    prefer-ip-address: true

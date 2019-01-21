@@ -5,13 +5,13 @@
     <parent>
         <artifactId>alliance</artifactId>
         <groupId>com.ruicheng</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ruicheng</groupId>
     <artifactId>hystrix-dashboard</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>hystrix-dashboard</name>
@@ -35,5 +35,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
