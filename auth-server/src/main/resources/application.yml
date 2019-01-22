@@ -3,6 +3,13 @@ server:
 spring:
   application:
     name: auth-server
+  #spring clooud Bus消息总线能够代理实例的各个节点，一个节点刷新会通知其他节点也刷新
+  #实现方式用rabbitmq消息代理作为通道，需要安装rabbitmq
+  rabbitmq:
+    host: 119.29.222.73
+    port: 5672
+    username: admin
+    password: 123456
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -17,10 +24,10 @@ spring:
     host: 10.0.0.192
     password: ruicheng123
     timeout: 8000
-    port: 6379
+    port: 6380
 eureka:
   client:
     service-url:
-      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+      defaultZone: http://admin:123456@localhsot:8000/eureka/
   instance:
     prefer-ip-address: true

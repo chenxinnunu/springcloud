@@ -16,7 +16,7 @@ spring:
       username: admin
       password: 123456
       #对应config-server所获取的配置文件的{application}部分
-      name: neo-config
+      name: customer-server
       #对应config-server所获取的配置文件的{profile}部分
       profile: dev
       #对应对应config-server所获取的配置文件的{label}，如果配置中心使用的是本地存储，则该参数无效
@@ -31,6 +31,6 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
+      defaultZone: http://admin:123456@localhost:8000/eureka/
   instance:
     prefer-ip-address: true

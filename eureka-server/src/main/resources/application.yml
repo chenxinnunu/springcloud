@@ -1,48 +1,53 @@
+server:
+  port: 8000
 spring:
   application:
     name: erueka-server
-  #开启安全验证
+    #开启安全验证
   security:
-    user:
-      name: admin
-      password: 123456
----
-spring:
-  #指定profile=peer1
-  profiles: peer1
-server:
-  port: 8000
+   user:
+    name: admin
+    password: 123456
 eureka:
   instance:
-    #指定当profile=peer1时，主机名是peer1
-    hostname: peer1
+    hostname: localhost
+    prefer-ip-address: true
   client:
+    #表示是否将自己注册到Eureka Server，默认为true
+    register-with-eureka: false
+    #表示是否从Eureka Server获取注册信息，默认为true
+    fetch-registry: false
+    #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。
+    #默认是http://localhost:8000/eureka；多个地址可使用,分离
     service-url:
-      #将自己注册到peer2这个Eureka上面去
-      defaultZone: http://admin:123456@peer2:8001/eureka/
----
-spring:
-  #指定profile=peer2
-  profiles: peer2
-server:
-  port: 8001
-eureka:
-  instance:
-    #指定当profile=peer2时，主机名是peer2
-    hostname: peer2
-  client:
-    service-url:
-      #将自己注册到peer1这个Eureka上面去
-      defaultZone: http://admin:123456@peer1:8000/eureka/
-  #单机配置
-  #eureka:
-  # client:
-  #表示是否将自己注册到Eureka Server，默认为true
-  #  register-with-eureka: false
-  #表示是否从Eureka Server获取注册信息，默认为true
-  # fetch-registry: false
-  #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。
-  #默认是http://localhost:8000/eureka；多个地址可使用,分离
-  #service-url:
-  # defaultZone: http://admin:123456@localhost:8000/eureka/
+      defaultZone: http://admin:123456@${eureka.instance.hostname}:${server.port}/eureka/
+#---
+#spring:
+#  #指定profile=peer1
+#  profiles: peer1
+#server:
+#  port: 8000
+#eureka:
+#  instance:
+#    #指定当profile=peer1时，主机名是peer1
+#    hostname: peer1
+#  client:
+#    service-url:
+#      #将自己注册到peer2这个Eureka上面去
+#      defaultZone: http://admin:123456@peer2:8001/eureka/
+#---
+#spring:
+#  #指定profile=peer2
+#  profiles: peer2
+#server:
+#  port: 8001
+#eureka:
+#  instance:
+#    #指定当profile=peer2时，主机名是peer2
+#    hostname: peer2
+#  client:
+#    service-url:
+#      #将自己注册到peer1这个Eureka上面去
+#      defaultZone: http://admin:123456@peer1:8000/eureka/
+
 
