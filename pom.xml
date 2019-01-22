@@ -82,14 +82,9 @@
                     </executions>
                     <configuration>
                         <!--指定镜像名称，第一个是仓库名称，后面的是镜像名称和标签名称-->
-                        <imageName>${docker.image.prefix}/${project.artifactId}/${project.version}</imageName>
+                        <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                         <!--从Dockerfile中读取-->
                         <dockerDirectory>${project.basedir}</dockerDirectory>
-                  <!--      <forceTags>true</forceTags>
-                        &lt;!&ndash;用于指定基础镜像，类似Dockerfile中的FROM指令&ndash;&gt;
-                        <baseImage>java</baseImage>
-                        &lt;!&ndash;入口点，类似Dockerfile的ENTRYPOINT指令&ndash;&gt;
-                        <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"</entryPoint>-->
                         <resources>
                             <resource>
                                 <targetPath>/</targetPath>
@@ -104,18 +99,4 @@
             </plugins>
         </pluginManagement>
     </build>
-    <!--maven私服 -->
-    <distributionManagement>
-        <repository>
-            <id>Releases</id>
-            <name>releases</name>
-            <url>http://10.0.0.192:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>Snapshots</id>
-            <name>snapshots</name>
-            <url>http://10.0.0.192:8081/nexus/content/repositories/snapshots/</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
 </project>

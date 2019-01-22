@@ -3,7 +3,7 @@ FROM java:8
 #将本地文件夹挂载到当前容器
 VOLUME /tmp
 #复制文件到容器
-ADD ./target/eureka-server-1.0.0.jar /app.jar
+ADD ./target/eureka-server.jar /app.jar
 #执行命令
 RUN bash -c 'touch /app.jar'
 #声明要暴露的端口
