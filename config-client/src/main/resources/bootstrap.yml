@@ -1,11 +1,4 @@
 spring:
-  #spring clooud Bus消息总线能够代理实例的各个节点，一个节点刷新会通知其他节点也刷新
-  #实现方式用rabbitmq消息代理作为通道，需要安装rabbitmq
-  rabbitmq:
-    host: 119.29.222.73
-    port: 5672
-    username: admin
-    password: 123456
   cloud:
     bus:
       trace:
@@ -21,16 +14,9 @@ spring:
       profile: dev
       #对应对应config-server所获取的配置文件的{label}，如果配置中心使用的是本地存储，则该参数无效
       label: master
-      #配置中心的具体地址
-      #uri: http://localhost:8300/
       discovery:
         #表示使用微服务发现组件中的config-server，而不是自己指定的config-server的uri，默认为false
         enabled: true
         #指定配置中心的service-id，便于扩展为高可用配置
         service-id: config-server
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://admin:123456@peer1:8000/eureka/,http://admin:123456@peer2:8001/eureka/
-  instance:
-    prefer-ip-address: true
+
