@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 //配置更新后，springboot2.0发送post请求到http://localhost:8400/actuator/refresh之后更新的配置才会被应用到项目中
 @RefreshScope
 public class ConfigController {
-    @Value("${server.port}")
+    @Value("${management.endpoints.web.exposure.include}")
     private String hello;
 
     @GetMapping("/hello")
