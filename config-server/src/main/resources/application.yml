@@ -10,6 +10,10 @@ spring:
       name: admin
       password: 123456
   cloud:
+    bus:
+      trace:
+        ## 开启消息跟踪
+        enabled: true
     config:
       server:
         git:
