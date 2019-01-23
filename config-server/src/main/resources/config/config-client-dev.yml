@@ -1,24 +1,6 @@
-server:
-  port: 8400
-spring:
-  application:
-    name: config-client
-    #spring clooud Bus消息总线能够代理实例的各个节点，一个节点刷新会通知其他节点也刷新
-  #实现方式用rabbitmq消息代理作为通道，需要安装rabbitmq
-  rabbitmq:
-    host: 119.29.222.73
-    port: 5672
-    username: admin
-    password: 123456
 #暴露endpoints *表示所有
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://admin:123456@localhost:8000/eureka/
-  instance:
-    prefer-ip-address: true
