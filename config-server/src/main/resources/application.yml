@@ -14,6 +14,7 @@ spring:
       trace:
         ## 开启消息跟踪
         enabled: true
+      enabled: true
     config:
       server:
         git:
