@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: config-server
+    #spring clooud Bus消息总线能够代理实例的各个节点，一个节点刷新会通知其他节点也刷新
+  #实现方式用rabbitmq消息代理作为通道，需要安装rabbitmq，将server端也加入消息总线，为了让server发请求给消息总线，保持服务单一职责性，对等性等
+  rabbitmq:
+    host: 119.29.222.73
+    port: 5672
+    username: admin
+    password: 123456
   #配置服务开启安全验证
   security:
     user:
@@ -23,13 +30,6 @@ spring:
           password: 22266.cxmm
           #配置git仓库下的相对地址，可以配置多个，用 , 分割
           search-paths: config-server/src/main/resources/config
-  #spring clooud Bus消息总线能够代理实例的各个节点，一个节点刷新会通知其他节点也刷新
-  #实现方式用rabbitmq消息代理作为通道，需要安装rabbitmq，将server端也加入消息总线，为了让server发请求给消息总线，保持服务单一职责性，对等性等
-  rabbitmq:
-    host: 119.29.222.73
-    port: 5672
-    username: admin
-    password: 123456
 eureka:
   client:
     serviceUrl:

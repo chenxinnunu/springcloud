@@ -10,7 +10,6 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 //激活对配置中心的支持
 @EnableConfigServer
 @SpringBootApplication
-@RefreshScope
 public class ConfigServerApplication {
 
 	public static void main(String[] args) {
