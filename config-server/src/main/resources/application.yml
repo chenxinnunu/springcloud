@@ -26,8 +26,8 @@ spring:
       server:
         git:
           uri: https://github.com/chenxinnunu/springcloud.git #配置git仓库的地址
-          username: chenxinnunu
-          password: 22266.cxmm
+          username:
+          password:
           #配置git仓库下的相对地址，可以配置多个，用 , 分割
           search-paths: config-server/src/main/resources/config
 eureka:
